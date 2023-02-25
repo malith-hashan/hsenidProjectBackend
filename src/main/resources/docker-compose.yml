@@ -1,0 +1,17 @@
+version: "3"
+services:
+  mongodoc:
+    image: mongo:latest
+    container_name: "mongodoc"
+    ports:
+      - 27017:27017
+
+  springboot-sec-mongodb:
+    image: springboot-sec-mongodb:1.0
+    build: ../../../
+    container_name: springboot-sec-mongodb
+    ports:
+      - 3003:3003
+    links:
+      - mongodoc
+
