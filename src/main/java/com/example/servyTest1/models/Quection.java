@@ -17,7 +17,7 @@ import java.util.List;
 public class Quection {
     @Id
     private String id;
-    private String quectionNo;
+    private int quectionNo;
     private String quectionName;
     private Date date;
 

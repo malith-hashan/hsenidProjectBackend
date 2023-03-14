@@ -24,8 +24,17 @@ public class QuectionControl {
     }
 
     @GetMapping("/")
-    @PreAuthorize("hasRole('ADMIN')")
+     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<Quection>> getAllQuections() {
+        try {
+            return new ResponseEntity<>(quectionService.getallquections(), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        }
+    }
+    @GetMapping("/serveyQuection/")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<List<Quection>> getAllQuectionsForServey() {
         try {
             return new ResponseEntity<>(quectionService.getallquections(), HttpStatus.OK);
         } catch (Exception e) {

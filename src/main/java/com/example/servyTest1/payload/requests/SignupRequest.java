@@ -17,4 +17,5 @@ public class SignupRequest {
     private Set<String> roles;
     @NotBlank
     private String password;
+
 }

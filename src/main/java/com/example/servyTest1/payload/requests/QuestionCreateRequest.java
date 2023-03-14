@@ -7,7 +7,7 @@ import java.util.List;
 
 public record QuestionCreateRequest(
         @JsonProperty("quectionNo")
-        String questionNo,
+        int questionNo,
 
         @JsonProperty("quectionName")
         String quectionName,

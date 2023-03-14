@@ -34,6 +34,8 @@ public class User {
     @DBRef
     private Set<Role> roles = new HashSet<>();
 
+    private int userId1;
+
 
     public User() {
     }
@@ -43,11 +45,34 @@ public class User {
         this.email = email;
         this.password = password;
         this.roles = roles;
+
+        try{
+            int userId = Integer.parseInt(this.id);
+            this.userId1=userId;
+        }
+        catch (NumberFormatException ex){
+            ex.printStackTrace();
+        }
+
+
+
+
+
     }
 
     public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
+
+        try{
+            int userId = Integer.parseInt(this.id);
+            this.userId1=userId;
+        }
+        catch (NumberFormatException ex){
+            ex.printStackTrace();
+        }
     }
+
+
 }

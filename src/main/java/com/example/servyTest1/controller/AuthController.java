@@ -50,10 +50,19 @@ public class AuthController {
     @Autowired
     JwtUtils jwtUtils;
 
+//    private static int userId = 0;
+//
+//    public static int getNextUserId() {
+//        userId++;
+//        return userId;
+//    }
+
+
 
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
+
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
@@ -71,6 +80,7 @@ public class AuthController {
                 userDetails.getUsername(),
                 userDetails.getEmail(),
                 roles));
+
     }
 
     @PostMapping("/signup")
@@ -86,7 +96,7 @@ public class AuthController {
                     .badRequest()
                     .body("Error: Email is already in use!");
         }
-
+       // int userid =getNextUserId();
         // Create new user's account
         User user = new User(signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
@@ -94,6 +104,8 @@ public class AuthController {
 
         Set<String> strRoles = signUpRequest.getRoles();
         Set<Role> roles = new HashSet<>();
+
+
 
         if (strRoles == null) {
             Role userRole = roleRepository.findByName(ERole.ROLE_USER)
@@ -119,6 +131,8 @@ public class AuthController {
         user.setRoles(roles);
         userRepository.save(user);
 
-        return ResponseEntity.ok("User registered successfully!");
+     return ResponseEntity.ok("User registered successfully!");
+
+
     }
 }

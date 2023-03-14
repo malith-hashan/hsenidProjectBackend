@@ -3,6 +3,7 @@ package com.example.servyTest1.controller;
 import com.example.servyTest1.payload.requests.ServeyCreateReqest;
 import com.example.servyTest1.models.Servey;
 import com.example.servyTest1.services.ServerService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@Slf4j
 @RestController
 @RequestMapping("/api/servey")
 public class ServeyControl {
@@ -50,8 +51,9 @@ public class ServeyControl {
 
 
     @PostMapping("/")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+   @PreAuthorize("hasRole('USER') ")
     public ResponseEntity<Servey>createServey(@RequestBody @Validated ServeyCreateReqest serveyCreateReqest){
+        log.info("ServeyControler");
     try {
         return new ResponseEntity<>(serverService.createServey(serveyCreateReqest),HttpStatus.OK);
     }catch (Exception e){
