@@ -1,5 +1,4 @@
 package com.example.servyTest1.controller;
-
 import com.example.servyTest1.payload.requests.QuectionUpdateRequest;
 import com.example.servyTest1.payload.requests.QuestionCreateRequest;
 import com.example.servyTest1.models.Quection;
@@ -10,19 +9,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/question")
 public class QuectionControl {
     QuectionService quectionService;
-
     @Autowired
     public QuectionControl(QuectionService quectionService) {
         this.quectionService = quectionService;
     }
-
     @GetMapping("/")
      @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<Quection>> getAllQuections() {
@@ -41,7 +37,6 @@ public class QuectionControl {
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
     }
-
     @PostMapping("/")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Quection> addQuection(@RequestBody @Validated QuestionCreateRequest questionCreateRequest) {
@@ -50,9 +45,7 @@ public class QuectionControl {
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
-
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteQuection(@PathVariable("id") String id) {
@@ -64,7 +57,6 @@ public class QuectionControl {
         } catch (Exception e) {
             return new ResponseEntity<>("Delete unsuccess!", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     @DeleteMapping("/")
@@ -90,7 +82,6 @@ public class QuectionControl {
             }
             else {
                 return new ResponseEntity<>(quectionService.updateQuection(id, quectionUpdateRequest), HttpStatus.OK);
-
             }
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -108,12 +99,10 @@ public class QuectionControl {
             else {
                 return new ResponseEntity<>(quectionService.getStudentById(id),HttpStatus.OK);
             }
-
         }
         catch (Exception e){
             return new ResponseEntity<>(null,HttpStatus.NO_CONTENT);
         }
     }
-
 
 }

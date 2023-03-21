@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public record QuectionUpdateRequest (
-
         @JsonProperty("quectionName")
-    String quectionName,
-    @JsonProperty("answer")
+        String quectionName,
+        @JsonProperty("answer")
         List<Answer> answer
 ){}

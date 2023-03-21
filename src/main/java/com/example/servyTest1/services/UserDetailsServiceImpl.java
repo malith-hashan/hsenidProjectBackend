@@ -15,13 +15,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 @Autowired
 UserRepositiory userRepositiory;
-
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepositiory.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
-
         return UserDetailsImpl.build(user);
     }
 }

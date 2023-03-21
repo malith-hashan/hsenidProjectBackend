@@ -1,7 +1,6 @@
 package com.example.servyTest1.security.jwt;
 
 import java.util.Date;
-
 import com.example.servyTest1.services.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
@@ -12,15 +11,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class JwtUtils {
-
     @Value("${springSecurity.app.jwtSecret}")
     private String jwtSecret;
-
     @Value("${spring.app.jwtExpirationMs}")
     private int jwtExpirationMs;
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
-
-
     public String generateJwtToken(Authentication authentication) {
 
       UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
@@ -53,6 +48,4 @@ public class JwtUtils {
 
         return false;
     }
-
-
 }

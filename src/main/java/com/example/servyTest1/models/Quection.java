@@ -20,7 +20,6 @@ public class Quection {
     private int quectionNo;
     private String quectionName;
     private Date date;
-
     private List<Answer> answers = new ArrayList<Answer>();
 
 

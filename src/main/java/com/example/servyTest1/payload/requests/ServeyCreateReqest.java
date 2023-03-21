@@ -1,7 +1,6 @@
 package com.example.servyTest1.payload.requests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 import java.util.Map;
 

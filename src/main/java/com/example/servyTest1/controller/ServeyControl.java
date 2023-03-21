@@ -49,7 +49,6 @@ public class ServeyControl {
         }
     }
 
-
     @PostMapping("/")
    @PreAuthorize("hasRole('USER') ")
     public ResponseEntity<Servey>createServey(@RequestBody @Validated ServeyCreateReqest serveyCreateReqest){
@@ -60,7 +59,6 @@ public class ServeyControl {
         return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
     }
     }
-
 
     @GetMapping("/user/{id}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")

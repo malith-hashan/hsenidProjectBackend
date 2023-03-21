@@ -14,13 +14,9 @@ import java.util.*;
 public class ServerService {
 @Autowired
 private ServeyRepository serverREpository;
-
-
-
 public List<Servey> getAllServeyDetails(){
     return serverREpository.findAll();
 }
-
 
 public Servey getServeyByServeyId(String id){
     Optional<Servey> foundServey =serverREpository.findById(id);
@@ -30,7 +26,6 @@ public Servey getServeyByServeyId(String id){
     }
     return null;
 }
-
 public Servey createServey(ServeyCreateReqest serveyCreateReqest){
     log.info("ServeyService");
     Servey servey=new Servey();
@@ -41,12 +36,10 @@ public Servey createServey(ServeyCreateReqest serveyCreateReqest){
     serverREpository.save(servey);
     return servey;
 }
-
 public List<Servey> getServeyByUserId(String id){
     List<Servey> foundServeys =serverREpository.findByUserid(id);
     return foundServeys;
 }
-
 
 public EResult calculateResult(Servey servey){
     List<Integer>listOfAnswer =new ArrayList<>();
@@ -57,7 +50,6 @@ public EResult calculateResult(Servey servey){
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             // retrieve the Integer value associated with the current key
             int value = entry.getValue();
-            // do something with the value (e.g. print it)
             listOfAnswer.add(value);
 
         }
@@ -86,6 +78,4 @@ public EResult calculateResult(Servey servey){
     }
   return resultFromString;
 }
-
-
 }

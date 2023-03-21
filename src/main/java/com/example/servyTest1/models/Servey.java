@@ -19,10 +19,8 @@ public class Servey {
     @Id
     private String id;
     private String userid;
-
     private List<Map<String, Integer>> userAnswerdQuection = new ArrayList<>();
     private EResult userResult;
-
     private Date date;
 
 
